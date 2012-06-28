@@ -20,14 +20,19 @@ Or install it yourself as:
 
 ## Usage
 
-$ rails console
+    $ rails console
 
 then
 
-rake 'db:migrate'
-rake 'db:rollback'
-rake 'routes'
-etc
+    rake 'db:migrate'
+    rake 'db:rollback'
+    rake 'routes'
+    # etc
+
+Pass Arguments
+
+    rake "emails:send_samples", "me@example.com"    
+    #=> rake emails:send_samples["me@example.com"]
 
 ## Contributing
 
