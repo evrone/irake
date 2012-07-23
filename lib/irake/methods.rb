@@ -1,9 +1,9 @@
 module IRB
   module ExtendCommandBundle
 
-    def rake(task_name)
+    def rake(task_name, *arguments)
       init_rake_tasks      
-      run_rake_task(task_name)
+      run_rake_task(task_name, arguments)
       nil
     end
 
@@ -14,8 +14,10 @@ module IRB
       end
     end
 
-    def run_rake_task(task_name)
-      Rake::Task[task_name].execute
+    def run_rake_task(task_name, arguments_array=[])
+      task = Rake::Task[task_name]
+      args = Rake::TaskArguments.new(task.arg_names, arguments_array)
+      task.execute( args )
     end
 
   end
