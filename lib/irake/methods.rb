@@ -7,6 +7,15 @@ module IRB
       nil
     end
 
+    def rake_tasks namespace=nil
+      Rake::Task.tasks.each do |task|
+        if namespace.nil? or task.name.starts_with? "#{namespace}:"
+          puts task.name
+        end
+      end
+      nil
+    end
+
     def init_rake_tasks
       unless Irake.tasks_loaded?
         Rails.application.load_tasks
