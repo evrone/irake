@@ -16,6 +16,12 @@ module IRB
       nil
     end
 
+    def rake_reload!
+      Rake::Task.clear
+      Rails.application.load_tasks
+      nil
+    end
+
     def init_rake_tasks
       unless Irake.tasks_loaded?
         Rails.application.load_tasks
